@@ -1,11 +1,15 @@
 package com.example.notepad
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.notepad.R
+import kotlinx.android.synthetic.main.activity_create_password.*
 
 class CreatePasswordActivity : AppCompatActivity() {
 
@@ -21,22 +25,30 @@ class CreatePasswordActivity : AppCompatActivity() {
         val btn = findViewById<Button>(R.id.submitPasswordButton)
 
         btn.setOnClickListener {
-            Toast.makeText(this, "Click", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@CreatePasswordActivity, "Click", Toast.LENGTH_SHORT).show()
             if (pass1Text == "" || pass2Text == "") {
                 //any of the two fields is empty
-                Toast.makeText(this, "Both fields must be filled", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CreatePasswordActivity, "Both fields must be filled", Toast.LENGTH_SHORT).show()
             } else if (pass1Text == pass2Text) {
                 //passwords match
                 sharedPref.edit().apply {
                     putString("password", pass1Text)
                 }.apply()
-                Toast.makeText(this, "Password set", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CreatePasswordActivity, "Password set", Toast.LENGTH_SHORT).show()
                 setContentView(R.layout.activity_main)
             } else {
                 //passwords don't match
-                Toast.makeText(this, "Passwords don't match", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CreatePasswordActivity, "Passwords don't match", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
+
+    /*
+    fun clickPasswordButton(view: View) {
+        Toast.makeText(this@CreatePasswordActivity, "Click", Toast.LENGTH_SHORT).show()
+    }
+
+     */
 
 }
