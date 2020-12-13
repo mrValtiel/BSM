@@ -2,13 +2,12 @@ package com.example.notepad
 
 import android.content.Context
 import android.os.Bundle
-import android.view.View
+import android.view.View.*
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.notepad.R
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_create_password.*
 
 class CreatePasswordActivity : AppCompatActivity() {
@@ -24,7 +23,12 @@ class CreatePasswordActivity : AppCompatActivity() {
         val pass2Text = pass2.text.toString()
         val btn = findViewById<Button>(R.id.submitPasswordButton)
 
-        btn.setOnClickListener {
+        findViewById<Button>(R.id.submitPasswordButton).setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+        }
+
+        submitPasswordButton.setOnClickListener {
             Toast.makeText(this@CreatePasswordActivity, "Click", Toast.LENGTH_SHORT).show()
             if (pass1Text == "" || pass2Text == "") {
                 //any of the two fields is empty
@@ -35,7 +39,7 @@ class CreatePasswordActivity : AppCompatActivity() {
                     putString("password", pass1Text)
                 }.apply()
                 Toast.makeText(this@CreatePasswordActivity, "Password set", Toast.LENGTH_SHORT).show()
-                setContentView(R.layout.activity_main)
+                setContentView(R.layout.activity_notes_list)
             } else {
                 //passwords don't match
                 Toast.makeText(this@CreatePasswordActivity, "Passwords don't match", Toast.LENGTH_SHORT).show()

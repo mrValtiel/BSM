@@ -1,13 +1,8 @@
 package com.example.notepad
 
 import android.content.Context
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.content.SharedPreferences
-import android.widget.TextView
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,5 +27,6 @@ class MainActivity : AppCompatActivity() {
             //if password exists
             setContentView(R.layout.activity_enter_password)
         }
+
     }
 }
